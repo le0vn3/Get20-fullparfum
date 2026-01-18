@@ -3,167 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parfum Élixir Intense</title>
+  <title>Élixir Intense</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #ffffff;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #f5f5f7;
+      min-height: 100vh;
+      padding: 40px 0;
+      line-height: 1.6;
+    }
+    
     .container {
-      max-width: 420px;
+      max-width: 980px;
       margin: auto;
-      padding: 20px;
+      padding: 0 20px;
     }
-    .card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    
+    .hero {
+      text-align: center;
+      margin-bottom: 80px;
     }
-    img.product {
+    
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, #f5f5f7 0%, #d1d1d6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero .subtitle {
+      font-size: 24px;
+      color: #86868b;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+    
+    .hero .price-line {
+      font-size: 20px;
+      color: #f5f5f7;
+      margin-top: 20px;
+    }
+    
+    .hero .price-line del {
+      color: #86868b;
+      margin-right: 12px;
+    }
+    
+    .price-highlight {
+      font-size: 28px;
+      font-weight: 600;
+      color: #06c;
+    }
+    
+    .shipping {
+      color: #06c;
+      font-size: 17px;
+      margin-top: 8px;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 40px;
+      }
+      
+      .hero .subtitle {
+        font-size: 20px;
+      }
+    }
+    
+    .image-section {
+      position: sticky;
+      top: 40px;
+    }
+    
+    .product-image {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #1d1d1f;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     }
-    h1 {
-      text-align: center;
-      margin-top: 15px;
+    
+    .product-image img {
+      width: 100%;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .price {
-      text-align: center;
-      font-size: 26px;
-      margin: 15px 0;
+    
+    .product-image:hover img {
+      transform: scale(1.03);
     }
-    .price del {
-      color: #888;
-      font-size: 18px;
+    
+    .form-section {
+      background: #1d1d1f;
+      border-radius: 18px;
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .price a {
-      color: #00ff9c;
-      text-decoration: none;
-      font-weight: bold;
+    
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
     }
-    ul {
+    
+    .features {
       list-style: none;
-      padding: 0;
+      margin-bottom: 48px;
     }
-    ul li {
-      padding: 6px 0;
+    
+    .features li {
+      padding: 20px 0;
+      border-bottom: 1px solid #424245;
+      font-size: 17px;
+      color: #f5f5f7;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
+    
+    .features li:last-child {
+      border-bottom: none;
+    }
+    
+    .features li::before {
+      content: '✓';
+      color: #06c;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #86868b;
+      font-weight: 400;
+    }
+    
     input {
       width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 14px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #424245;
+      background: #000000;
+      color: #f5f5f7;
+      font-size: 17px;
+      transition: all 0.2s ease;
+      font-family: inherit;
     }
+    
+    input:focus {
+      outline: none;
+      border-color: #06c;
+      box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+    }
+    
+    input::placeholder {
+      color: #6e6e73;
+    }
+    
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 14px;
-      margin-top: 15px;
-      border-radius: 8px;
+      gap: 8px;
+      padding: 18px;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
+      font-weight: 500;
+      font-size: 17px;
       cursor: pointer;
-    }
-    .btn-pay {
-      background: #00ff9c;
-      color: #000;
       border: none;
+      transition: all 0.2s ease;
       width: 100%;
+      font-family: inherit;
+      margin-top: 12px;
     }
-    .btn-discord {
-      background: #5865F2;
-      color: #fff;
+    
+    .btn-primary {
+      background: #06c;
+      color: #ffffff;
     }
-    .btn-discord img {
-      width: 22px;
-      height: 22px;
+    
+    .btn-primary:hover {
+      background: #0077ED;
     }
-    .note {
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 15px;
+    
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+    
+    .btn-secondary {
+      background: #424245;
+      color: #f5f5f7;
+    }
+    
+    .btn-secondary:hover {
+      background: #535356;
+    }
+    
+    .btn-secondary img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .security-note {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid #424245;
       text-align: center;
+    }
+    
+    .security-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+    
+    .security-item {
+      text-align: center;
+    }
+    
+    .security-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .security-text {
+      font-size: 13px;
+      color: #86868b;
+    }
+    
+    .privacy-text {
+      font-size: 13px;
+      color: #86868b;
+      line-height: 1.5;
+    }
+    
+    .divider {
+      margin: 32px 0;
+      height: 1px;
+      background: #424245;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="card">
+  
+  <div class="hero">
+    <h1>Élixir Intense</h1>
+    <p class="subtitle">L'essence du raffinement</p>
+    <div class="price-line">
+      <del>65 €</del>
+      <span class="price-highlight">52 €</span>
+    </div>
+    <p class="shipping">Livraison offerte</p>
+  </div>
 
-    <img class="product" src="https://i.ibb.co/k265wmmD/ba76b8c5b81235d54a98baaa991b5c82.jpg" alt="Parfum Élixir Intense">
-
-    <h1>Parfum Élixir Intense</h1>
-
-    <div class="price">
-      <del>65 €</del><br>
-      <strong>52 € – Livraison offerte</strong>
+  <div class="content-grid">
+    
+    <div class="image-section">
+      <div class="product-image">
+        <img src="https://i.ibb.co/k265wmmD/ba76b8c5b81235d54a98baaa991b5c82.jpg" alt="Élixir Intense">
+      </div>
     </div>
 
-    <ul>
-      <li>✔️ Fragrance intense et élégante</li>
-      <li>✔️ Tenue longue durée</li>
-      <li>✔️ Inspiré des grandes fragrances</li>
-      <li>✔️ Livraison directement chez vous</li>
-    </ul>
+    <div class="form-section">
+      
+      <h2 class="section-title">Caractéristiques</h2>
+      
+      <ul class="features">
+        <li>Fragrance intense et élégante</li>
+        <li>Tenue longue durée</li>
+        <li>Inspiré des grandes fragrances</li>
+        <li>Livraison directe à domicile</li>
+      </ul>
 
-    <!-- FORMULAIRE ADRESSE -->
-    <input type="text" id="name" placeholder="Nom complet" required>
-    <input type="text" id="address" placeholder="Adresse complète" required>
-    <input type="text" id="postal" placeholder="Code postal" required>
-    <input type="text" id="city" placeholder="Ville" required>
-    <input type="email" id="email" placeholder="Email" required>
+      <div class="divider"></div>
 
-    <!-- BOUTON PAYPAL -->
-    <button class="btn btn-pay" onclick="pay()">
-      Payer avec PayPal
-    </button>
+      <h2 class="section-title">Commander</h2>
 
-    <a class="btn btn-discord" href="https://discord.gg/Jzg8sN92N2" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-      Support Discord
-    </a>
+      <div class="form-group">
+        <label>Nom complet</label>
+        <input type="text" id="name" placeholder="Jean Dupont" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Adresse complète</label>
+        <input type="text" id="address" placeholder="12 rue de la Paix" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Code postal</label>
+        <input type="text" id="postal" placeholder="75000" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Ville</label>
+        <input type="text" id="city" placeholder="Paris" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="nom@exemple.com" required>
+      </div>
 
-    <div class="note">
-      Vos informations servent uniquement à la livraison.
+      <button class="btn btn-primary" onclick="pay()">
+        Payer avec PayPal
+      </button>
+
+      <a class="btn btn-secondary" href="https://discord.gg/Jzg8sN92N2" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+        Support client
+      </a>
+
+      <div class="security-note">
+        <div class="security-icons">
+          <div class="security-item">
+            <div class="security-icon">🔒</div>
+            <div class="security-text">Paiement<br>sécurisé</div>
+          </div>
+          <div class="security-item">
+            <div class="security-icon">🚚</div>
+            <div class="security-text">Livraison<br>rapide</div>
+          </div>
+          <div class="security-item">
+            <div class="security-icon">✓</div>
+            <div class="security-text">Garantie<br>qualité</div>
+          </div>
+        </div>
+        <p class="privacy-text">
+          Vos informations sont protégées et utilisées<br>uniquement pour le traitement de votre commande.
+        </p>
+      </div>
+
     </div>
 
   </div>
+
 </div>
 
 <script>
 function pay() {
-  const name = document.getElementById("name").value;
-  const address = document.getElementById("address").value;
-  const postal = document.getElementById("postal").value;
-  const city = document.getElementById("city").value;
-  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const postal = document.getElementById("postal").value.trim();
+  const city = document.getElementById("city").value.trim();
+  const email = document.getElementById("email").value.trim();
 
   if (!name || !address || !postal || !city || !email) {
     alert("Merci de remplir tous les champs.");
     return;
   }
 
+  // Validation email basique
+  if (!email.includes('@')) {
+    alert("Veuillez entrer une adresse email valide.");
+    return;
+  }
+
   const note = encodeURIComponent(
-    "Nom: " + name +
-    " | Adresse: " + address +
-    " | CP: " + postal +
-    " | Ville: " + city +
-    " | Email: " + email
+    "LIVRAISON - Nom: " + name +
+    ", Adresse: " + address +
+    ", CP: " + postal +
+    ", Ville: " + city +
+    ", Email: " + email
   );
 
-  window.location.href = "https://paypal.me/PaMe372106/52?note=" + note;
+  const paypalUrl = "https://paypal.me/PaMe372106/52EUR?locale.x=fr_FR&note=" + note;
+  
+  console.log("Redirection vers:", paypalUrl);
+  window.open(paypalUrl, '_blank');
 }
 </script>
 
 </body>
-      </html>
+          </html>
