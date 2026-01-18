@@ -52,6 +52,14 @@
     ul li {
       padding: 6px 0;
     }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
     .btn {
       display: flex;
       align-items: center;
@@ -63,10 +71,13 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 16px;
+      cursor: pointer;
     }
     .btn-pay {
       background: #00ff9c;
       color: #000;
+      border: none;
+      width: 100%;
     }
     .btn-discord {
       background: #5865F2;
@@ -86,41 +97,73 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="card">
+<div class="container">
+  <div class="card">
 
-      <!-- IMAGE PRODUIT -->
-      <img class="product" src="https://i.ibb.co/k265wmmD/ba76b8c5b81235d54a98baaa991b5c82.jpg" alt="Parfum Élixir Intense">
+    <img class="product" src="https://i.ibb.co/k265wmmD/ba76b8c5b81235d54a98baaa991b5c82.jpg" alt="Parfum Élixir Intense">
 
-      <h1>Parfum Élixir Intense</h1>
+    <h1>Parfum Élixir Intense</h1>
 
-      <div class="price">
-        <del>65 €</del><br>
-        <a href="https://paypal.me/PaMe372106/52">52 € – Livraison offerte</a>
-      </div>
-
-      <ul>
-        <li>✔️ Fragrance intense et élégante</li>
-        <li>✔️ Tenue longue durée</li>
-        <li>✔️ Inspiré des grandes fragrances</li>
-        <li>✔️ Livraison directement chez vous</li>
-      </ul>
-
-      <a class="btn btn-pay" href="https://paypal.me/PaMe372106/52">
-        Payer avec PayPal
-      </a>
-
-      <a class="btn btn-discord" href="https://discord.gg/Jzg8sN92N2" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-        Support Discord
-      </a>
-
-      <div class="note">
-        Après le paiement, merci d’indiquer votre adresse complète en note PayPal.
-      </div>
-
+    <div class="price">
+      <del>65 €</del><br>
+      <strong>52 € – Livraison offerte</strong>
     </div>
+
+    <ul>
+      <li>✔️ Fragrance intense et élégante</li>
+      <li>✔️ Tenue longue durée</li>
+      <li>✔️ Inspiré des grandes fragrances</li>
+      <li>✔️ Livraison directement chez vous</li>
+    </ul>
+
+    <!-- FORMULAIRE ADRESSE -->
+    <input type="text" id="name" placeholder="Nom complet" required>
+    <input type="text" id="address" placeholder="Adresse complète" required>
+    <input type="text" id="postal" placeholder="Code postal" required>
+    <input type="text" id="city" placeholder="Ville" required>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <!-- BOUTON PAYPAL -->
+    <button class="btn btn-pay" onclick="pay()">
+      Payer avec PayPal
+    </button>
+
+    <a class="btn btn-discord" href="https://discord.gg/Jzg8sN92N2" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+      Support Discord
+    </a>
+
+    <div class="note">
+      Vos informations servent uniquement à la livraison.
+    </div>
+
   </div>
+</div>
+
+<script>
+function pay() {
+  const name = document.getElementById("name").value;
+  const address = document.getElementById("address").value;
+  const postal = document.getElementById("postal").value;
+  const city = document.getElementById("city").value;
+  const email = document.getElementById("email").value;
+
+  if (!name || !address || !postal || !city || !email) {
+    alert("Merci de remplir tous les champs.");
+    return;
+  }
+
+  const note = encodeURIComponent(
+    "Nom: " + name +
+    " | Adresse: " + address +
+    " | CP: " + postal +
+    " | Ville: " + city +
+    " | Email: " + email
+  );
+
+  window.location.href = "https://paypal.me/PaMe372106/52?note=" + note;
+}
+</script>
 
 </body>
-        </html>
+      </html>
